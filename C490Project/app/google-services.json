@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "170118352292",
+    "firebase_url": "https://c490project-96eab.firebaseio.com",
+    "project_id": "c490project-96eab",
+    "storage_bucket": "c490project-96eab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170118352292:android:9aa63c782693da30c2c531",
+        "android_client_info": {
+          "package_name": "edu.ius.c490.c490project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170118352292-hk27vkcc1i4s0qbih3mklhoo2p3ljvoo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.ius.c490.c490project",
+            "certificate_hash": "cb13c1c08e2572369028ab5c136ab682dd4cd18b"
+          }
+        },
+        {
+          "client_id": "170118352292-fvpbf6u456r43oe4jvsd4l4es32vqlrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfFbPZosMQkyTbnhm0QYYyBG7MgTpIznI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170118352292-fvpbf6u456r43oe4jvsd4l4es32vqlrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
