@@ -1,7 +1,7 @@
-package edu.ius.c490.c490project
+package com.example.budgetProject
 
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,7 +18,7 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("edu.ius.c490.c490project", appContext.packageName)
+        val appContext = InstrumentationRegistry.getTargetContext()
+        assertEquals("com.example.criminalintent", appContext.packageName)
     }
 }

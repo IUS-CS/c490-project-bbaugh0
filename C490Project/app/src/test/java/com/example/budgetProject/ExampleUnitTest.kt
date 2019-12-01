@@ -1,4 +1,4 @@
-package edu.ius.c490.c490project
+package com.example.budgetProject
 
 import org.junit.Test
 

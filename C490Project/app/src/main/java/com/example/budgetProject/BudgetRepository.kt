@@ -1,17 +1,19 @@
-package edu.ius.c490.c490project
+package com.example.budgetProject
 
+import android.content.Context
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.IllegalStateException
 import java.util.concurrent.Executors
 
 private const val TAG = "BudgetRepository"
 
-class BudgetRepository {
+class BudgetRepository private constructor(context: Context) {
+
 
     private val db = FirebaseFirestore.getInstance()
+
     private val executor = Executors.newSingleThreadExecutor()
-
-
     fun getBudgets(handler: GetBudgetsHandler) {
         executor.execute {
             db.collection("BudgetsCollection")
@@ -81,6 +83,21 @@ class BudgetRepository {
                 }
         }
     }
+    companion object {
+        private var INSTANCE: BudgetRepository? = null
+
+        fun initialize(context: Context) {
+            if (INSTANCE == null) {
+                INSTANCE = BudgetRepository(context)
+            }
+        }
+
+        fun get(): BudgetRepository {
+            return INSTANCE ?:
+            throw IllegalStateException("BudgetRepository must be initialized")
+        }
+    }
+
 
     interface GetBudgetsHandler {
         fun onGetBudgets(budgets: List<Budget>?)
@@ -89,4 +106,6 @@ class BudgetRepository {
     interface GetBudgetHandler {
         fun onGetBudget(budget: Budget?)
     }
+
 }
+

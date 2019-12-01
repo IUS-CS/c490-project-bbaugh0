@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:170118352292:android:288cf72a0e857c6bc2c531",
+        "android_client_info": {
+          "package_name": "com.example.criminalintent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170118352292-r32fhh9be7f3egh32g34srucldatfn2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.criminalintent",
+            "certificate_hash": "cb13c1c08e2572369028ab5c136ab682dd4cd18b"
+          }
+        },
+        {
+          "client_id": "170118352292-fvpbf6u456r43oe4jvsd4l4es32vqlrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfFbPZosMQkyTbnhm0QYYyBG7MgTpIznI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170118352292-fvpbf6u456r43oe4jvsd4l4es32vqlrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:170118352292:android:9aa63c782693da30c2c531",
         "android_client_info": {
           "package_name": "edu.ius.c490.c490project"
