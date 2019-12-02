@@ -15,15 +15,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val TAG = "BudgetListFragment"
 
-class BudgetListFragment : Fragment(), BudgetRepository.GetBudgetsHandler {
+class BudgetListFragment(var dto: FacebookDTO) : Fragment(), BudgetRepository.GetBudgetsHandler {
 
     private lateinit var budgetRecyclerView: RecyclerView
     private lateinit var addButton: FloatingActionButton
     private var adapter: BudgetAdapter? = BudgetAdapter(emptyList())
 
-    companion object {
-        fun newInstance() = BudgetListFragment()
-    }
+//    companion object {
+//        fun newInstance() = BudgetListFragment(dto)
+//    }
 
     private val viewModel: BudgetListViewModel by lazy {
         ViewModelProviders.of(this).get(BudgetListViewModel::class.java)
@@ -34,7 +34,7 @@ class BudgetListFragment : Fragment(), BudgetRepository.GetBudgetsHandler {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.budget_list_fragment, container, false)
-
+        this.viewModel.name = dto.name
         budgetRecyclerView = view.findViewById(R.id.budget_recycler_View)
         budgetRecyclerView.layoutManager = LinearLayoutManager(context)
         budgetRecyclerView.adapter = adapter
@@ -85,7 +85,7 @@ class BudgetListFragment : Fragment(), BudgetRepository.GetBudgetsHandler {
         }
 
         override fun onClick(v: View) {
-            callbacks?.onBudgetSelected(budget.id.toString())
+            callbacks?.onBudgetSelected(budget.id)
         }
 
         fun bind(budget: Budget) {

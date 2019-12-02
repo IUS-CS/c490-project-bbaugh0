@@ -6,4 +6,8 @@
     <string name="budget_title_label">Title</string>
     <string name="budget_title_hint">Enter name for budget item.</string>
     <string name="budget_amount_hint">Enter amount for budget item.</string>
+    <string name="facebook_app_id">485688972292170</string>
+    <string name="fb_login_protocol_scheme">fb485688972292170</string>
+
+
 </resources>

@@ -14,9 +14,10 @@ class BudgetRepository private constructor(context: Context) {
     private val db = FirebaseFirestore.getInstance()
 
     private val executor = Executors.newSingleThreadExecutor()
-    fun getBudgets(handler: GetBudgetsHandler) {
+    fun getBudgets(handler: GetBudgetsHandler, name: String) {
         executor.execute {
             db.collection("BudgetsCollection")
+                .whereEqualTo("name", name)
                 .get()
                 .addOnSuccessListener {
                     if (it == null) {
