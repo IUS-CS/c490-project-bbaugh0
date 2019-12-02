@@ -10,11 +10,14 @@ private const val TAG = "BudgetRepository"
 
 class BudgetRepository private constructor(context: Context) {
 
+    var username: String = ""
+
 
     private val db = FirebaseFirestore.getInstance()
 
     private val executor = Executors.newSingleThreadExecutor()
     fun getBudgets(handler: GetBudgetsHandler, name: String) {
+        username = name
         executor.execute {
             db.collection("BudgetsCollection")
                 .whereEqualTo("name", name)

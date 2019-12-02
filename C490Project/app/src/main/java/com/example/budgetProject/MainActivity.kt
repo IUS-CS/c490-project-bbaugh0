@@ -19,6 +19,8 @@ private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity(), BudgetListFragment.Callbacks {
 
+    var name: String = ""
+
     val fragmentContainer: FrameLayout by lazy { findViewById<FrameLayout>(R.id.fragment_container) }
     private lateinit var loginButton: LoginButton
     private var callbackManager: CallbackManager? = null
@@ -45,7 +47,7 @@ class MainActivity : AppCompatActivity(), BudgetListFragment.Callbacks {
                         var gson = Gson()
                         var dataString = `object`.toString()
                         dto = gson.fromJson(dataString, FacebookDTO::class.java)
-
+                        name = dto!!.name
                         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
                         if (currentFragment == null) {
                             val fragment = BudgetListFragment(dto!!)
@@ -90,7 +92,7 @@ class MainActivity : AppCompatActivity(), BudgetListFragment.Callbacks {
     }
 
     override fun onBudgetSelected(budgetId: String) {
-        val fragment = BudgetFragment.newInstance(budgetId)
+        val fragment = BudgetFragment.newInstance(budgetId, null)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
@@ -98,8 +100,8 @@ class MainActivity : AppCompatActivity(), BudgetListFragment.Callbacks {
             .commit()
     }
 
-    override fun onNewBudget() {
-        val fragment = BudgetFragment.newInstance(null)
+    override fun onNewBudget(name: String) {
+        val fragment = BudgetFragment.newInstance(null, name)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)

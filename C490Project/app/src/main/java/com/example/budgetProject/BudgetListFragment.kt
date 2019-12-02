@@ -41,7 +41,7 @@ class BudgetListFragment(var dto: FacebookDTO) : Fragment(), BudgetRepository.Ge
 
         addButton = view.findViewById(R.id.add_budget)
         addButton.setOnClickListener {
-            callbacks?.onNewBudget()
+            callbacks?.onNewBudget(dto.name)
         }
 
         return view
@@ -54,6 +54,9 @@ class BudgetListFragment(var dto: FacebookDTO) : Fragment(), BudgetRepository.Ge
         }
         Log.d(TAG, "Got budgets: ${budgets}")
         for (budget in budgets) {
+            if(budget.name.isNullOrEmpty()) {
+                budget.name = dto.name
+            }
             Log.d(TAG, "Budget ${id}: ${budget.title}")
         }
         updateUI(budgets!!)
@@ -115,7 +118,7 @@ class BudgetListFragment(var dto: FacebookDTO) : Fragment(), BudgetRepository.Ge
 
     interface Callbacks {
         fun onBudgetSelected(budgetId: String)
-        fun onNewBudget()
+        fun onNewBudget(name: String)
     }
 
     private var callbacks: Callbacks? = null

@@ -18,6 +18,7 @@ import java.util.*
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
 private const val TAG = "BudgetFragment"
 
@@ -75,6 +76,7 @@ class BudgetFragment : Fragment(), BudgetRepository.GetBudgetHandler {
         Log.d(TAG, "onCreateView for ${budgetID}")
         if (budgetID == null) {
             this.budget = Budget()
+            this.budget.name = budgetRepository.username
             updateUI()
         } else
             budgetRepository.getBudget(this, budgetID!!)
@@ -202,10 +204,11 @@ class BudgetFragment : Fragment(), BudgetRepository.GetBudgetHandler {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(budgetId: String?) =
+        fun newInstance(budgetId: String?, name: String?) =
             BudgetFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_PARAM1, budgetId)
+                    putSerializable(ARG_PARAM2, name)
                 }
             }
     }
