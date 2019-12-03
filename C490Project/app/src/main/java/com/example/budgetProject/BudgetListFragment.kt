@@ -21,10 +21,6 @@ class BudgetListFragment(var dto: FacebookDTO) : Fragment(), BudgetRepository.Ge
     private lateinit var addButton: FloatingActionButton
     private var adapter: BudgetAdapter? = BudgetAdapter(emptyList())
 
-//    companion object {
-//        fun newInstance() = BudgetListFragment(dto)
-//    }
-
     private val viewModel: BudgetListViewModel by lazy {
         ViewModelProviders.of(this).get(BudgetListViewModel::class.java)
     }

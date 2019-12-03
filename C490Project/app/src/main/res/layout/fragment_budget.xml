@@ -44,7 +44,13 @@
                         android:layout_height="wrap_content"
                         android:hint="Enter amount spent"
                         android:id="@+id/amount_spent"
-                        android:paddingTop="15dp" />
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"/>
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Reset current amount"
+                        android:id="@+id/reset_button" />
             </LinearLayout>
 
         </LinearLayout>

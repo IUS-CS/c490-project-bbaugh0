@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.FileProvider
 import java.util.*
+import kotlin.math.round
+import kotlin.math.roundToInt
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,6 +44,7 @@ class BudgetFragment : Fragment(), BudgetRepository.GetBudgetHandler {
     private lateinit var maxBudget: EditText
     private lateinit var amountSpent: EditText
     private lateinit var budget: Budget
+    private lateinit var resetButton: Button
     private var spent: String? = null
 
 
@@ -73,14 +76,18 @@ class BudgetFragment : Fragment(), BudgetRepository.GetBudgetHandler {
         titleField = view.findViewById(R.id.budget_title)
         maxBudget = view.findViewById(R.id.budget_amount)
         amountSpent = view.findViewById(R.id.amount_spent)
+        resetButton = view.findViewById(R.id.reset_button)
         Log.d(TAG, "onCreateView for ${budgetID}")
+
         if (budgetID == null) {
             this.budget = Budget()
             this.budget.name = budgetRepository.username
             updateUI()
         } else
             budgetRepository.getBudget(this, budgetID!!)
-
+        resetButton.setOnClickListener {
+            this.budget.currentBudget = "0"
+        }
         return view
     }
 
@@ -172,6 +179,7 @@ class BudgetFragment : Fragment(), BudgetRepository.GetBudgetHandler {
             }
 
             currentAmount += moneySpent
+            currentAmount = "%.2f".format(currentAmount).toDouble()
 
             budget.currentBudget = currentAmount.toString()
         }
